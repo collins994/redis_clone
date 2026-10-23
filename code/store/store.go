@@ -1,7 +1,6 @@
 package main
 
 import (
-	// "fmt"
 	"errors"
 	"sort"
 	"strings"
@@ -12,21 +11,21 @@ var ErrEmptyKey = errors.New("the key is empty")
 var ErrStoreCapacityReached = errors.New("The Store capacity has been reached")
 
 type Store struct {
-	data map[string]string
-	capacity int;
+	data     map[string]string
+	capacity int
 }
 
 func NewStore(capacity int) *Store {
 	return &Store{
-		data: make(map[string]string),
+		data:     make(map[string]string),
 		capacity: capacity,
 	}
 }
 
 func (s *Store) Set(key, value string) error {
-	if s.Len() >= s.capacity {
-		if _, exists := s.data[key]; !exists{ // a new key at store capacity
-			return ErrStoreCapacityReached;
+	if s.Len() >= s.capacity && s.capacity != 0 {
+		if _, exists := s.data[key]; !exists { // a new key at store capacity
+			return ErrStoreCapacityReached
 		}
 	}
 

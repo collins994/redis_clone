@@ -52,20 +52,47 @@
 !_TAG_ROLE_DESCRIPTION!Go!package	imported	/imported package/
 !_TAG_ROLE_DESCRIPTION!Go!unknown	receiverType	/receiver type/
 Delete	code/store.go	/^func (s *Store) Delete(key string) {$/;"	f	struct:main.Store
+Delete	code/ttlstore.go	/^func (s *TTLStore) Delete(key string) {$/;"	f	struct:main.TTLStore
 ErrEmptyKey	code/store.go	/^var ErrEmptyKey = errors.New("the key is empty")$/;"	v	package:main
 ErrKeyDoesNotExist	code/store.go	/^var ErrKeyDoesNotExist = errors.New("the key does not exist")$/;"	v	package:main
+ErrKeyExpired	code/ttlstore.go	/^	ErrKeyExpired = errors.New("the key already expired")$/;"	v	package:main
+ErrStoreCapacityReached	code/store.go	/^var ErrStoreCapacityReached = errors.New("The Store capacity has been reached")$/;"	v	package:main
 Get	code/store.go	/^func (s *Store) Get(key string) (string, error) {$/;"	f	struct:main.Store	typeref:typename:(string, error)
+Get	code/storer.go	/^	Get(key string) (string, error)$/;"	n	interface:main.Storer	typeref:typename:(string, error)
+Get	code/ttlstore.go	/^func (s *TTLStore) Get(key string) (string, error) {$/;"	f	struct:main.TTLStore	typeref:typename:(string, error)
 Keys	code/store.go	/^func (s *Store) Keys() []string {$/;"	f	struct:main.Store	typeref:typename:[]string
 Len	code/store.go	/^func (s *Store) Len() int {$/;"	f	struct:main.Store	typeref:typename:int
-NewStore	code/store.go	/^func NewStore(MaxSize uint) *Store {$/;"	f	package:main	typeref:typename:*Store
+Len	code/ttlstore.go	/^func (s *TTLStore) Len() int {$/;"	f	struct:main.TTLStore	typeref:typename:int
+NewStore	code/store.go	/^func NewStore(capacity int) *Store {$/;"	f	package:main	typeref:typename:*Store
+NewTTLStore	code/ttlstore.go	/^func NewTTLStore(ttl time.Duration, capacity int) *TTLStore {$/;"	f	package:main	typeref:typename:*TTLStore
 Set	code/store.go	/^func (s *Store) Set(key, value string) error {$/;"	f	struct:main.Store	typeref:typename:error
+Set	code/storer.go	/^	Set(key, value string) error$/;"	n	interface:main.Storer	typeref:typename:error
+Set	code/ttlstore.go	/^func (s *TTLStore) Set(key string, value string) error {$/;"	f	struct:main.TTLStore	typeref:typename:error
+SetKeyWithEncryption	code/storer.go	/^func SetKeyWithEncryption(store Storer, key string, value string) (string, error) {$/;"	f	package:main	typeref:typename:(string, error)
 Store	code/store.go	/^type Store struct {$/;"	s	package:main
+Storer	code/storer.go	/^type Storer interface {$/;"	i	package:main
+TTLStore	code/ttlstore.go	/^type TTLStore struct {$/;"	s	package:main
 TestDelete	code/store_test.go	/^func TestDelete(t *testing.T) {$/;"	f	package:main
+TestGet	code/ttlstore_test.go	/^func TestGet(t *testing.T) {$/;"	f	package:main
 TestGetSet_EmptyKeys	code/store_test.go	/^func TestGetSet_EmptyKeys(t *testing.T) {$/;"	f	package:main
 TestKeys_ReturnsSorted	code/store_test.go	/^func TestKeys_ReturnsSorted(t *testing.T) {$/;"	f	package:main
+TestSet	code/ttlstore_test.go	/^func TestSet(t *testing.T) {$/;"	f	package:main
 TestSetGet_RoundTrip	code/store_test.go	/^func TestSetGet_RoundTrip(t *testing.T) {$/;"	f	package:main
-data	code/store.go	/^	data map[string]string$/;"	m	struct:main.Store	typeref:typename:map[string]string
+TestSetKeyWithEncryption_store	code/storer_test.go	/^func TestSetKeyWithEncryption_store(t *testing.T) {$/;"	f	package:main
+TestSet_ReturnsAnErrorAtStoreCapacity	code/store_test.go	/^func TestSet_ReturnsAnErrorAtStoreCapacity(t *testing.T) {$/;"	f	package:main
+capacity	code/store.go	/^	capacity int$/;"	m	struct:main.Store	typeref:typename:int
+capacity	code/ttlstore.go	/^	capacity int$/;"	m	struct:main.TTLStore	typeref:typename:int
+data	code/store.go	/^	data     map[string]string$/;"	m	struct:main.Store	typeref:typename:map[string]string
+data	code/ttlstore.go	/^	data     map[string]ttlEntry$/;"	m	struct:main.TTLStore	typeref:typename:map[string]ttlEntry
+expiryTime	code/ttlstore.go	/^	expiryTime time.Time$/;"	m	struct:main.ttlEntry	typeref:typename:time.Time
 main	code/main.go	/^func main() {$/;"	f	package:main
 main	code/main.go	/^package main$/;"	p
 main	code/store.go	/^package main$/;"	p
 main	code/store_test.go	/^package main$/;"	p
+main	code/storer.go	/^package main$/;"	p
+main	code/storer_test.go	/^package main$/;"	p
+main	code/ttlstore.go	/^package main$/;"	p
+main	code/ttlstore_test.go	/^package main$/;"	p
+ttl	code/ttlstore.go	/^	ttl      time.Duration$/;"	m	struct:main.TTLStore	typeref:typename:time.Duration
+ttlEntry	code/ttlstore.go	/^type ttlEntry struct {$/;"	s	package:main
+value	code/ttlstore.go	/^	value      string$/;"	m	struct:main.ttlEntry	typeref:typename:string

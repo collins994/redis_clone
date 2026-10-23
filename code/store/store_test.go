@@ -7,7 +7,7 @@ import (
 )
 
 func TestKeys_ReturnsSorted(t *testing.T) {
-	store := NewStore(10)
+	store := NewStore(0)
 	store.Set("1", "collins")
 	store.Set("3", "Fred")
 	store.Set("2", "Steve")
@@ -21,7 +21,7 @@ func TestKeys_ReturnsSorted(t *testing.T) {
 }
 
 func TestSetGet_RoundTrip(t *testing.T) {
-	store := NewStore(10)
+	store := NewStore(0)
 	store.Set("name", "collins")
 
 	_, err := store.Get("name")
@@ -51,7 +51,7 @@ func TestDelete(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			var store = NewStore(10)
+			var store = NewStore(0)
 			for key, val := range test.setup {
 				store.Set(key, val)
 			}
@@ -70,7 +70,7 @@ func TestDelete(t *testing.T) {
 }
 
 func TestGetSet_EmptyKeys(t *testing.T) {
-	var store = NewStore(10)
+	var store = NewStore(0)
 
 	if _, err := store.Get(" "); err == nil || !errors.Is(err, ErrEmptyKey) {
 		t.Errorf("Get() failed to return an error on an empty key\n")

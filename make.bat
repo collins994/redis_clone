@@ -16,13 +16,16 @@ if "%1" == "run" (
 
 if "%1" == "test" (
 	pushd code
-		go test .
+		go test ./store
 	popd
 	exit /b
 )
 
+if "%1" == "push" (
+	git push https://github.com/collins994/redis_clone main
+)
+
 if "%1" == "tags" (
-	echo generating tags...
 	ctags -R  --exclude=build
 	EXIT /B
 )
