@@ -51,48 +51,64 @@
 !_TAG_ROLE_DESCRIPTION!DTD!parameterEntity	partOfAttDef	/part of attribute definition/
 !_TAG_ROLE_DESCRIPTION!Go!package	imported	/imported package/
 !_TAG_ROLE_DESCRIPTION!Go!unknown	receiverType	/receiver type/
-Delete	code/store.go	/^func (s *Store) Delete(key string) {$/;"	f	struct:main.Store
-Delete	code/ttlstore.go	/^func (s *TTLStore) Delete(key string) {$/;"	f	struct:main.TTLStore
-ErrEmptyKey	code/store.go	/^var ErrEmptyKey = errors.New("the key is empty")$/;"	v	package:main
-ErrKeyDoesNotExist	code/store.go	/^var ErrKeyDoesNotExist = errors.New("the key does not exist")$/;"	v	package:main
-ErrKeyExpired	code/ttlstore.go	/^	ErrKeyExpired = errors.New("the key already expired")$/;"	v	package:main
-ErrStoreCapacityReached	code/store.go	/^var ErrStoreCapacityReached = errors.New("The Store capacity has been reached")$/;"	v	package:main
-Get	code/store.go	/^func (s *Store) Get(key string) (string, error) {$/;"	f	struct:main.Store	typeref:typename:(string, error)
-Get	code/storer.go	/^	Get(key string) (string, error)$/;"	n	interface:main.Storer	typeref:typename:(string, error)
-Get	code/ttlstore.go	/^func (s *TTLStore) Get(key string) (string, error) {$/;"	f	struct:main.TTLStore	typeref:typename:(string, error)
-Keys	code/store.go	/^func (s *Store) Keys() []string {$/;"	f	struct:main.Store	typeref:typename:[]string
-Len	code/store.go	/^func (s *Store) Len() int {$/;"	f	struct:main.Store	typeref:typename:int
-Len	code/ttlstore.go	/^func (s *TTLStore) Len() int {$/;"	f	struct:main.TTLStore	typeref:typename:int
-NewStore	code/store.go	/^func NewStore(capacity int) *Store {$/;"	f	package:main	typeref:typename:*Store
-NewTTLStore	code/ttlstore.go	/^func NewTTLStore(ttl time.Duration, capacity int) *TTLStore {$/;"	f	package:main	typeref:typename:*TTLStore
-Set	code/store.go	/^func (s *Store) Set(key, value string) error {$/;"	f	struct:main.Store	typeref:typename:error
-Set	code/storer.go	/^	Set(key, value string) error$/;"	n	interface:main.Storer	typeref:typename:error
-Set	code/ttlstore.go	/^func (s *TTLStore) Set(key string, value string) error {$/;"	f	struct:main.TTLStore	typeref:typename:error
-SetKeyWithEncryption	code/storer.go	/^func SetKeyWithEncryption(store Storer, key string, value string) (string, error) {$/;"	f	package:main	typeref:typename:(string, error)
-Store	code/store.go	/^type Store struct {$/;"	s	package:main
-Storer	code/storer.go	/^type Storer interface {$/;"	i	package:main
-TTLStore	code/ttlstore.go	/^type TTLStore struct {$/;"	s	package:main
-TestDelete	code/store_test.go	/^func TestDelete(t *testing.T) {$/;"	f	package:main
-TestGet	code/ttlstore_test.go	/^func TestGet(t *testing.T) {$/;"	f	package:main
-TestGetSet_EmptyKeys	code/store_test.go	/^func TestGetSet_EmptyKeys(t *testing.T) {$/;"	f	package:main
-TestKeys_ReturnsSorted	code/store_test.go	/^func TestKeys_ReturnsSorted(t *testing.T) {$/;"	f	package:main
-TestSet	code/ttlstore_test.go	/^func TestSet(t *testing.T) {$/;"	f	package:main
-TestSetGet_RoundTrip	code/store_test.go	/^func TestSetGet_RoundTrip(t *testing.T) {$/;"	f	package:main
-TestSetKeyWithEncryption_store	code/storer_test.go	/^func TestSetKeyWithEncryption_store(t *testing.T) {$/;"	f	package:main
-TestSet_ReturnsAnErrorAtStoreCapacity	code/store_test.go	/^func TestSet_ReturnsAnErrorAtStoreCapacity(t *testing.T) {$/;"	f	package:main
-capacity	code/store.go	/^	capacity int$/;"	m	struct:main.Store	typeref:typename:int
-capacity	code/ttlstore.go	/^	capacity int$/;"	m	struct:main.TTLStore	typeref:typename:int
-data	code/store.go	/^	data     map[string]string$/;"	m	struct:main.Store	typeref:typename:map[string]string
-data	code/ttlstore.go	/^	data     map[string]ttlEntry$/;"	m	struct:main.TTLStore	typeref:typename:map[string]ttlEntry
-expiryTime	code/ttlstore.go	/^	expiryTime time.Time$/;"	m	struct:main.ttlEntry	typeref:typename:time.Time
+Delete	code/middleware.go	/^func (l *LoggingMiddleware) Delete(key string) {$/;"	f	struct:main.LoggingMiddleware
+Delete	code/store/kv/kv.go	/^func (s *Store) Delete(key string) {$/;"	f	struct:kv.Store
+Delete	code/store/storer.go	/^	Delete(key string)$/;"	n	interface:store.Storer
+Delete	code/store/ttlstore/ttlstore.go	/^func (s *TTLStore) Delete(key string) {$/;"	f	struct:ttlstore.TTLStore
+ErrEmptyKey	code/store/store.go	/^var ErrEmptyKey = errors.New("the key is empty")$/;"	v	package:store
+ErrKeyDoesNotExist	code/store/store.go	/^var ErrKeyDoesNotExist = errors.New("the key does not exist")$/;"	v	package:store
+ErrKeyExpired	code/store/store.go	/^var ErrKeyExpired = errors.New("the key already expired")$/;"	v	package:store
+ErrStoreCapacityReached	code/store/store.go	/^var ErrStoreCapacityReached = errors.New("The Store capacity has been reached")$/;"	v	package:store
+Get	code/middleware.go	/^func (l *LoggingMiddleware) Get(key string) (string, error) {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:(string, error)
+Get	code/store/kv/kv.go	/^func (s *Store) Get(key string) (string, error) {$/;"	f	struct:kv.Store	typeref:typename:(string, error)
+Get	code/store/storer.go	/^	Get(key string) (string, error)$/;"	n	interface:store.Storer	typeref:typename:(string, error)
+Get	code/store/ttlstore/ttlstore.go	/^func (s *TTLStore) Get(key string) (string, error) {$/;"	f	struct:ttlstore.TTLStore	typeref:typename:(string, error)
+Keys	code/middleware.go	/^func (l *LoggingMiddleware) Keys() []string {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:[]string
+Keys	code/store/kv/kv.go	/^func (s *Store) Keys() []string {$/;"	f	struct:kv.Store	typeref:typename:[]string
+Keys	code/store/storer.go	/^	Keys() []string$/;"	n	interface:store.Storer	typeref:typename:[]string
+Keys	code/store/ttlstore/ttlstore.go	/^func (s *TTLStore) Keys() []string {$/;"	f	struct:ttlstore.TTLStore	typeref:typename:[]string
+Len	code/middleware.go	/^func (l *LoggingMiddleware) Len() int {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:int
+Len	code/store/kv/kv.go	/^func (s *Store) Len() int {$/;"	f	struct:kv.Store	typeref:typename:int
+Len	code/store/storer.go	/^	Len() int$/;"	n	interface:store.Storer	typeref:typename:int
+Len	code/store/ttlstore/ttlstore.go	/^func (s *TTLStore) Len() int {$/;"	f	struct:ttlstore.TTLStore	typeref:typename:int
+LoggingMiddleware	code/middleware.go	/^type LoggingMiddleware struct {$/;"	s	package:main
+NewKVStore	code/store/kv/kv.go	/^func NewKVStore(capacity int) *Store {$/;"	f	package:kv	typeref:typename:*Store
+NewLoggingMiddleware	code/middleware.go	/^func NewLoggingMiddleware(inner store.Storer) *store.Storer {$/;"	f	package:main	typeref:typename:*store.Storer
+NewTTLStore	code/store/ttlstore/ttlstore.go	/^func NewTTLStore(ttl time.Duration, capacity int) *TTLStore {$/;"	f	package:ttlstore	typeref:typename:*TTLStore
+Set	code/middleware.go	/^func (l *LoggingMiddleware) Set(key, value string) error {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:error
+Set	code/store/kv/kv.go	/^func (s *Store) Set(key, value string) error {$/;"	f	struct:kv.Store	typeref:typename:error
+Set	code/store/storer.go	/^	Set(key, value string) error$/;"	n	interface:store.Storer	typeref:typename:error
+Set	code/store/ttlstore/ttlstore.go	/^func (s *TTLStore) Set(key string, value string) error {$/;"	f	struct:ttlstore.TTLStore	typeref:typename:error
+SetKeyWithEncryption	code/store/storer.go	/^func SetKeyWithEncryption(store Storer, key string, value string) (string, error) {$/;"	f	package:store	typeref:typename:(string, error)
+Store	code/store/kv/kv.go	/^type Store struct {$/;"	s	package:kv
+Storer	code/store/storer.go	/^type Storer interface {$/;"	i	package:store
+TTLStore	code/store/ttlstore/ttlstore.go	/^type TTLStore struct {$/;"	s	package:ttlstore
+TestDelete	code/store/kv/kv_test.go	/^func TestDelete(t *testing.T) {$/;"	f	package:kv
+TestGet	code/store/ttlstore/ttlstore_test.go	/^func TestGet(t *testing.T) {$/;"	f	package:ttlstore
+TestGetSet_EmptyKeys	code/store/kv/kv_test.go	/^func TestGetSet_EmptyKeys(t *testing.T) {$/;"	f	package:kv
+TestKeys_ReturnsSorted	code/store/kv/kv_test.go	/^func TestKeys_ReturnsSorted(t *testing.T) {$/;"	f	package:kv
+TestSet	code/store/ttlstore/ttlstore_test.go	/^func TestSet(t *testing.T) {$/;"	f	package:ttlstore
+TestSetGet_RoundTrip	code/store/kv/kv_test.go	/^func TestSetGet_RoundTrip(t *testing.T) {$/;"	f	package:kv
+TestSetKeyWithEncryption_TTLStore	code/store/storer_test.go	/^func TestSetKeyWithEncryption_TTLStore(t *testing.T) {$/;"	f	package:store
+TestSetKeyWithEncryption_kv	code/store/storer_test.go	/^func TestSetKeyWithEncryption_kv(t *testing.T) {$/;"	f	package:store
+TestSet_ReturnsAnErrorAtStoreCapacity	code/store/kv/kv_test.go	/^func TestSet_ReturnsAnErrorAtStoreCapacity(t *testing.T) {$/;"	f	package:kv
+capacity	code/store/kv/kv.go	/^	capacity int$/;"	m	struct:kv.Store	typeref:typename:int
+capacity	code/store/ttlstore/ttlstore.go	/^	capacity int$/;"	m	struct:ttlstore.TTLStore	typeref:typename:int
+data	code/store/kv/kv.go	/^	data     map[string]string$/;"	m	struct:kv.Store	typeref:typename:map[string]string
+data	code/store/ttlstore/ttlstore.go	/^	data     map[string]ttlEntry$/;"	m	struct:ttlstore.TTLStore	typeref:typename:map[string]ttlEntry
+expiryTime	code/store/ttlstore/ttlstore.go	/^	expiryTime time.Time$/;"	m	struct:ttlstore.ttlEntry	typeref:typename:time.Time
+inner	code/middleware.go	/^	inner  store.Storer$/;"	m	struct:main.LoggingMiddleware	typeref:typename:store.Storer
+kv	code/store/kv/kv.go	/^package kv$/;"	p
+kv	code/store/kv/kv_test.go	/^package kv$/;"	p
+logger	code/middleware.go	/^	logger *log.Logger$/;"	m	struct:main.LoggingMiddleware	typeref:typename:*log.Logger
 main	code/main.go	/^func main() {$/;"	f	package:main
 main	code/main.go	/^package main$/;"	p
-main	code/store.go	/^package main$/;"	p
-main	code/store_test.go	/^package main$/;"	p
-main	code/storer.go	/^package main$/;"	p
-main	code/storer_test.go	/^package main$/;"	p
-main	code/ttlstore.go	/^package main$/;"	p
-main	code/ttlstore_test.go	/^package main$/;"	p
-ttl	code/ttlstore.go	/^	ttl      time.Duration$/;"	m	struct:main.TTLStore	typeref:typename:time.Duration
-ttlEntry	code/ttlstore.go	/^type ttlEntry struct {$/;"	s	package:main
-value	code/ttlstore.go	/^	value      string$/;"	m	struct:main.ttlEntry	typeref:typename:string
+main	code/middleware.go	/^package main$/;"	p
+store	code/store/store.go	/^package store$/;"	p
+store	code/store/storer.go	/^package store$/;"	p
+store	code/store/storer_test.go	/^package store$/;"	p
+ttl	code/store/ttlstore/ttlstore.go	/^	ttl      time.Duration$/;"	m	struct:ttlstore.TTLStore	typeref:typename:time.Duration
+ttlEntry	code/store/ttlstore/ttlstore.go	/^type ttlEntry struct {$/;"	s	package:ttlstore
+ttlstore	code/store/ttlstore/ttlstore.go	/^package ttlstore$/;"	p
+ttlstore	code/store/ttlstore/ttlstore_test.go	/^package ttlstore$/;"	p
+value	code/store/ttlstore/ttlstore.go	/^	value      string$/;"	m	struct:ttlstore.ttlEntry	typeref:typename:string

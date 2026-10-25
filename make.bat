@@ -17,6 +17,8 @@ if "%1" == "run" (
 if "%1" == "test" (
 	pushd code
 		go test ./store
+		go test ./store/kv
+		go test ./store/ttlstore
 	popd
 	exit /b
 )

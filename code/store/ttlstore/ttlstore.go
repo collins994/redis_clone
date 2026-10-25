@@ -1,13 +1,9 @@
-package main
+package ttlstore
 
 import (
-	"errors"
+	"github.com/collins994/redis_clone/code/store"
 	"strings"
 	"time"
-)
-
-var (
-	ErrKeyExpired = errors.New("the key already expired")
 )
 
 type ttlEntry struct {
@@ -32,11 +28,11 @@ func NewTTLStore(ttl time.Duration, capacity int) *TTLStore {
 func (s *TTLStore) Set(key string, value string) error {
 	if s.Len() >= s.capacity && s.capacity != 0 {
 		if _, exists := s.data[key]; !exists { // a new key at store capacity
-			return ErrStoreCapacityReached
+			return store.ErrStoreCapacityReached
 		}
 	}
 	if strings.TrimSpace(key) == "" {
-		return ErrEmptyKey
+		return store.ErrEmptyKey
 	}
 
 	s.data[key] = ttlEntry{
@@ -49,17 +45,17 @@ func (s *TTLStore) Set(key string, value string) error {
 
 func (s *TTLStore) Get(key string) (string, error) {
 	if strings.TrimSpace(key) == "" {
-		return "", ErrEmptyKey
+		return "", store.ErrEmptyKey
 	}
 
 	val, ok := s.data[key]
 	if !ok {
-		return "", ErrKeyDoesNotExist
+		return "", store.ErrKeyDoesNotExist
 	}
 
 	if time.Now().After(val.expiryTime) {
 		s.Delete(key)
-		return "", ErrKeyExpired
+		return "", store.ErrKeyExpired
 	}
 	return val.value, nil
 }
