@@ -51,7 +51,8 @@
 !_TAG_ROLE_DESCRIPTION!DTD!parameterEntity	partOfAttDef	/part of attribute definition/
 !_TAG_ROLE_DESCRIPTION!Go!package	imported	/imported package/
 !_TAG_ROLE_DESCRIPTION!Go!unknown	receiverType	/receiver type/
-Delete	code/middleware.go	/^func (l *LoggingMiddleware) Delete(key string) {$/;"	f	struct:main.LoggingMiddleware
+Delete	code/LoggingMiddleware.go	/^func (l *LoggingMiddleware) Delete(key string) {$/;"	f	struct:main.LoggingMiddleware
+Delete	code/MetricsMiddleware.go	/^func (m *MetricsMiddleware) Delete(key string) {$/;"	f	struct:main.MetricsMiddleware
 Delete	code/store/kv/kv.go	/^func (s *Store) Delete(key string) {$/;"	f	struct:kv.Store
 Delete	code/store/storer.go	/^	Delete(key string)$/;"	n	interface:store.Storer
 Delete	code/store/ttlstore/ttlstore.go	/^func (s *TTLStore) Delete(key string) {$/;"	f	struct:ttlstore.TTLStore
@@ -59,23 +60,30 @@ ErrEmptyKey	code/store/store.go	/^var ErrEmptyKey = errors.New("the key is empty
 ErrKeyDoesNotExist	code/store/store.go	/^var ErrKeyDoesNotExist = errors.New("the key does not exist")$/;"	v	package:store
 ErrKeyExpired	code/store/store.go	/^var ErrKeyExpired = errors.New("the key already expired")$/;"	v	package:store
 ErrStoreCapacityReached	code/store/store.go	/^var ErrStoreCapacityReached = errors.New("The Store capacity has been reached")$/;"	v	package:store
-Get	code/middleware.go	/^func (l *LoggingMiddleware) Get(key string) (string, error) {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:(string, error)
+Get	code/LoggingMiddleware.go	/^func (l *LoggingMiddleware) Get(key string) (string, error) {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:(string, error)
+Get	code/MetricsMiddleware.go	/^func (m *MetricsMiddleware) Get(key string) (string, error) {$/;"	f	struct:main.MetricsMiddleware	typeref:typename:(string, error)
 Get	code/store/kv/kv.go	/^func (s *Store) Get(key string) (string, error) {$/;"	f	struct:kv.Store	typeref:typename:(string, error)
 Get	code/store/storer.go	/^	Get(key string) (string, error)$/;"	n	interface:store.Storer	typeref:typename:(string, error)
 Get	code/store/ttlstore/ttlstore.go	/^func (s *TTLStore) Get(key string) (string, error) {$/;"	f	struct:ttlstore.TTLStore	typeref:typename:(string, error)
-Keys	code/middleware.go	/^func (l *LoggingMiddleware) Keys() []string {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:[]string
+Keys	code/LoggingMiddleware.go	/^func (l *LoggingMiddleware) Keys() []string {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:[]string
+Keys	code/MetricsMiddleware.go	/^func (m *MetricsMiddleware) Keys() []string { return m.inner.Keys() }$/;"	f	struct:main.MetricsMiddleware	typeref:typename:[]string
 Keys	code/store/kv/kv.go	/^func (s *Store) Keys() []string {$/;"	f	struct:kv.Store	typeref:typename:[]string
 Keys	code/store/storer.go	/^	Keys() []string$/;"	n	interface:store.Storer	typeref:typename:[]string
 Keys	code/store/ttlstore/ttlstore.go	/^func (s *TTLStore) Keys() []string {$/;"	f	struct:ttlstore.TTLStore	typeref:typename:[]string
-Len	code/middleware.go	/^func (l *LoggingMiddleware) Len() int {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:int
+Len	code/LoggingMiddleware.go	/^func (l *LoggingMiddleware) Len() int {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:int
+Len	code/MetricsMiddleware.go	/^func (m *MetricsMiddleware) Len() int       { m.lenCalls++; return m.inner.Len() }$/;"	f	struct:main.MetricsMiddleware	typeref:typename:int
 Len	code/store/kv/kv.go	/^func (s *Store) Len() int {$/;"	f	struct:kv.Store	typeref:typename:int
 Len	code/store/storer.go	/^	Len() int$/;"	n	interface:store.Storer	typeref:typename:int
 Len	code/store/ttlstore/ttlstore.go	/^func (s *TTLStore) Len() int {$/;"	f	struct:ttlstore.TTLStore	typeref:typename:int
-LoggingMiddleware	code/middleware.go	/^type LoggingMiddleware struct {$/;"	s	package:main
+LoggingMiddleware	code/LoggingMiddleware.go	/^type LoggingMiddleware struct {$/;"	s	package:main
+MetricsMiddleware	code/MetricsMiddleware.go	/^type MetricsMiddleware struct {$/;"	s	package:main
 NewKVStore	code/store/kv/kv.go	/^func NewKVStore(capacity int) *Store {$/;"	f	package:kv	typeref:typename:*Store
-NewLoggingMiddleware	code/middleware.go	/^func NewLoggingMiddleware(inner store.Storer) *store.Storer {$/;"	f	package:main	typeref:typename:*store.Storer
+NewLoggingMiddleware	code/LoggingMiddleware.go	/^func NewLoggingMiddleware(inner store.Storer) store.Storer {$/;"	f	package:main	typeref:typename:store.Storer
+NewMetricsMiddleware	code/MetricsMiddleware.go	/^func NewMetricsMiddleware(inner store.Storer) store.Storer {$/;"	f	package:main	typeref:typename:store.Storer
 NewTTLStore	code/store/ttlstore/ttlstore.go	/^func NewTTLStore(ttl time.Duration, capacity int) *TTLStore {$/;"	f	package:ttlstore	typeref:typename:*TTLStore
-Set	code/middleware.go	/^func (l *LoggingMiddleware) Set(key, value string) error {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:error
+Report	code/MetricsMiddleware.go	/^func (m *MetricsMiddleware) Report() {$/;"	f	struct:main.MetricsMiddleware
+Set	code/LoggingMiddleware.go	/^func (l *LoggingMiddleware) Set(key, value string) error {$/;"	f	struct:main.LoggingMiddleware	typeref:typename:error
+Set	code/MetricsMiddleware.go	/^func (m *MetricsMiddleware) Set(key, value string) error {$/;"	f	struct:main.MetricsMiddleware	typeref:typename:error
 Set	code/store/kv/kv.go	/^func (s *Store) Set(key, value string) error {$/;"	f	struct:kv.Store	typeref:typename:error
 Set	code/store/storer.go	/^	Set(key, value string) error$/;"	n	interface:store.Storer	typeref:typename:error
 Set	code/store/ttlstore/ttlstore.go	/^func (s *TTLStore) Set(key string, value string) error {$/;"	f	struct:ttlstore.TTLStore	typeref:typename:error
@@ -96,17 +104,26 @@ capacity	code/store/kv/kv.go	/^	capacity int$/;"	m	struct:kv.Store	typeref:typen
 capacity	code/store/ttlstore/ttlstore.go	/^	capacity int$/;"	m	struct:ttlstore.TTLStore	typeref:typename:int
 data	code/store/kv/kv.go	/^	data     map[string]string$/;"	m	struct:kv.Store	typeref:typename:map[string]string
 data	code/store/ttlstore/ttlstore.go	/^	data     map[string]ttlEntry$/;"	m	struct:ttlstore.TTLStore	typeref:typename:map[string]ttlEntry
+deleteCalls	code/MetricsMiddleware.go	/^	deleteCalls int$/;"	m	struct:main.MetricsMiddleware	typeref:typename:int
 expiryTime	code/store/ttlstore/ttlstore.go	/^	expiryTime time.Time$/;"	m	struct:ttlstore.ttlEntry	typeref:typename:time.Time
-inner	code/middleware.go	/^	inner  store.Storer$/;"	m	struct:main.LoggingMiddleware	typeref:typename:store.Storer
+getCalls	code/MetricsMiddleware.go	/^	getCalls    int$/;"	m	struct:main.MetricsMiddleware	typeref:typename:int
+getMisses	code/MetricsMiddleware.go	/^	getMisses       int$/;"	m	struct:main.MetricsMiddleware	typeref:typename:int
+inner	code/LoggingMiddleware.go	/^	inner  store.Storer$/;"	m	struct:main.LoggingMiddleware	typeref:typename:store.Storer
+inner	code/MetricsMiddleware.go	/^	inner       store.Storer$/;"	m	struct:main.MetricsMiddleware	typeref:typename:store.Storer
 kv	code/store/kv/kv.go	/^package kv$/;"	p
 kv	code/store/kv/kv_test.go	/^package kv$/;"	p
-logger	code/middleware.go	/^	logger *log.Logger$/;"	m	struct:main.LoggingMiddleware	typeref:typename:*log.Logger
+lenCalls	code/MetricsMiddleware.go	/^	lenCalls    int$/;"	m	struct:main.MetricsMiddleware	typeref:typename:int
+logger	code/LoggingMiddleware.go	/^	logger *log.Logger$/;"	m	struct:main.LoggingMiddleware	typeref:typename:*log.Logger
+main	code/LoggingMiddleware.go	/^package main$/;"	p
+main	code/MetricsMiddleware.go	/^package main$/;"	p
 main	code/main.go	/^func main() {$/;"	f	package:main
 main	code/main.go	/^package main$/;"	p
-main	code/middleware.go	/^package main$/;"	p
+setCalls	code/MetricsMiddleware.go	/^	setCalls    int$/;"	m	struct:main.MetricsMiddleware	typeref:typename:int
 store	code/store/store.go	/^package store$/;"	p
 store	code/store/storer.go	/^package store$/;"	p
 store	code/store/storer_test.go	/^package store$/;"	p
+totalGetLatency	code/MetricsMiddleware.go	/^	totalGetLatency time.Duration$/;"	m	struct:main.MetricsMiddleware	typeref:typename:time.Duration
+totalSetLatency	code/MetricsMiddleware.go	/^	totalSetLatency time.Duration$/;"	m	struct:main.MetricsMiddleware	typeref:typename:time.Duration
 ttl	code/store/ttlstore/ttlstore.go	/^	ttl      time.Duration$/;"	m	struct:ttlstore.TTLStore	typeref:typename:time.Duration
 ttlEntry	code/store/ttlstore/ttlstore.go	/^type ttlEntry struct {$/;"	s	package:ttlstore
 ttlstore	code/store/ttlstore/ttlstore.go	/^package ttlstore$/;"	p

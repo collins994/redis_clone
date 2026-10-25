@@ -6,11 +6,14 @@ import (
 )
 
 func main() {
-	var logger = NewLoggingMiddleware(kv.NewKVStore(0))
-	logger.Set("name", "collins")
-	logger.Get("name")
+	var kvStore = NewMetricsMiddleware(NewLoggingMiddleware(kv.NewKVStore(0)))
+	kvStore.Set("name", "collins")
+	kvStore.Get("name")
 
-	store.SetKeyWithEncryption(logger, "name2", "collins ondeyo");
-	logger.Get("name2")
-	logger.Get("name3")
+	store.SetKeyWithEncryption(kvStore, "name2", "collins ondeyo");
+	kvStore.Get("name2")
+	kvStore.Get("name3")
+	kvStore.Keys()
+
+	kvStore.Report();
 }
